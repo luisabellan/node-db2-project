@@ -7,15 +7,12 @@ exports.up = function(knex) {
         .notNullable();
 
         tbl.text('make', 20)
-        .unique()
         .notNullable();
 
         tbl.text('model', 20)
-        .unique()
         .notNullable();
 
         tbl.float('mileage', 2)
-        .unique()
         .notNullable();         
         
         tbl.text('transmissionType') // automatic / manual

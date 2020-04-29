@@ -50,7 +50,7 @@ router.get("/:id", function _callee2(req, res, next) {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          id = req.params.id;
+          id = req.params.id.id;
           _context2.next = 4;
           return regeneratorRuntime.awrap(db("cars").where({
             id: id
