@@ -1,16 +1,17 @@
+const port = process.env.PORT || 5000
 const express = require("express")
+const server = require("./api/server.js");
+
 const helmet = require("helmet")
 const welcomeRouter = require("./welcome/welcome-router")
 const carsRouter = require("./cars/cars-router")
 
-const server = express()
-const port = process.env.PORT || 5000
 
 server.use(helmet())
 server.use(express.json())
 
-server.use("/", welcomeRouter)
-server.use("/cars", carsRouter)
+server.use("/api/", welcomeRouter)
+server.use("/api/cars", carsRouter)
 
 server.use((err, req, res, next) => {
 	console.log(err)
