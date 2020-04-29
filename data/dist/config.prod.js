@@ -1,0 +1,1 @@
+"use strict";var knex=require("knex"),knexfile=require("../knexfile");module.exports=knex(knexfile);

@@ -1,12 +1,12 @@
 const express = require("express")
-const db = require("../car-dealer")
+const db = require("../data/config")
 
 const router = express.Router()
 
 //READ all cars
 router.get("/", async (req, res, next) => {
 	try {
-		const fruits = await db("cars")
+		const cars = await db("cars")
 		
 		res.json(cars)
 	} catch(err) {

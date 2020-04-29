@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/luisabellan/node-db2-project#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
     "knex": "^0.21.0",
     "sqlite3": "^4.2.0"
   }
