@@ -50,7 +50,7 @@ router.get("/:id", function _callee2(req, res, next) {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          id = req.params.id.id;
+          id = req.params.id;
           _context2.next = 4;
           return regeneratorRuntime.awrap(db("cars").where({
             id: id
@@ -113,5 +113,72 @@ router.post("/", function _callee3(req, res, next) {
       }
     }
   }, null, null, [[0, 13]]);
+});
+router.put("/:id", function _callee4(req, res, next) {
+  var payload, updatedAccount;
+  return regeneratorRuntime.async(function _callee4$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          payload = {
+            "VIN": req.body.VIN,
+            "make": req.body.make,
+            "model": req.body.model,
+            "mileage": req.body.mileage,
+            "transmissionType": req.body.transmissionType,
+            "status": req.body.status
+          }; // translates to `UPDATE "cars" SET "title" = ? AND "contents" = ? WHERE "id" = ?;`
+
+          _context4.next = 4;
+          return regeneratorRuntime.awrap(db("cars").where("id", req.params.id).update(payload));
+
+        case 4:
+          _context4.next = 6;
+          return regeneratorRuntime.awrap(db("cars").where("id", req.params.id).first());
+
+        case 6:
+          updatedAccount = _context4.sent;
+          res.json(updatedAccount);
+          _context4.next = 13;
+          break;
+
+        case 10:
+          _context4.prev = 10;
+          _context4.t0 = _context4["catch"](0);
+          next(_context4.t0);
+
+        case 13:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  }, null, null, [[0, 10]]);
+});
+router["delete"]("/:id", function _callee5(req, res, next) {
+  return regeneratorRuntime.async(function _callee5$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return regeneratorRuntime.awrap(db("cars").where("id", req.params.id).del());
+
+        case 3:
+          res.status(204).end();
+          _context5.next = 9;
+          break;
+
+        case 6:
+          _context5.prev = 6;
+          _context5.t0 = _context5["catch"](0);
+          next(_context5.t0);
+
+        case 9:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  }, null, null, [[0, 6]]);
 });
 module.exports = router;
